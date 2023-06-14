@@ -6,6 +6,7 @@
 
 html, body, #root, .App {
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -63,3 +64,17 @@ body {
 }
 
 
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+   margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+h3 {
+  color: black;
+}
+
+a:link, a:visited, a:hover, a:active  { text-decoration: none; }

@@ -1,11 +1,14 @@
 import '../index.css';
 import reaper from '../images/reaper.webp';
+import sword from '../images/sword.webp';
+import spear from '../images/spear.webp';
+import { Link } from "react-router-dom";
 
 function Shop() {
   return (
     <div className="App">
       <header className="flex-row header">
-        <h1>THE LAIR</h1>
+        <Link to="/">THE LAIR</Link>
         <div>
           <input type="text" placeholder="Search"></input>
           <button>Cart</button>
@@ -22,36 +25,22 @@ function Shop() {
         </div>
         <div className='catalogue'>
           <div>
-            <img src={ reaper } alt='item'></img>
-            <h3>$100</h3>
+            <Link to={`/reaper`}>
+              <img src={ reaper } alt='item'></img>
+              <h3>$100</h3>
+            </Link>
           </div>
           <div>
-            <img src={ reaper } alt='item'></img>
-            <h3>$100</h3>
+            <Link to={`/sword`}>
+              <img src={ sword } alt='item'></img>
+              <h3>$100</h3>
+            </Link>
           </div>
           <div>
-            <img src={ reaper } alt='item'></img>
-            <h3>$100</h3>
-          </div>
-          <div>
-            <img src={ reaper } alt='item'></img>
-            <h3>$100</h3>
-          </div>
-          <div>
-            <img src={ reaper } alt='item'></img>
-            <h3>$100</h3>
-          </div>
-          <div>
-            <img src={ reaper } alt='item'></img>
-            <h3>$100</h3>
-          </div>
-          <div>
-            <img src={ reaper } alt='item'></img>
-            <h3>$100</h3>
-          </div>
-          <div>
-            <img src={ reaper } alt='item'></img>
-            <h3>$100</h3>
+            <Link to={`/spear`}>
+              <img src={ spear } alt='item'></img>
+              <h3>$100</h3>
+            </Link>
           </div>
         </div>
       </div>

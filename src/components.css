@@ -1,0 +1,11 @@
+.item {
+    position: relative;
+}
+
+.cart {
+    position: absolute;
+    background-color: yellow;
+    top: 0;
+    right: 0;
+    height: 100%;
+}
