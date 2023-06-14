@@ -75,7 +75,7 @@ function Item() {
           <p>Sanguine Reaper</p>
           <p>Weapon</p>
           <p>$10</p>
-          <p>A two-handed weapon that deals physical damage. Has a greater effect on undead.</p>
+          <p></p>
           <div>
             <button onClick={decrementNumber}>-</button>
             <input type="number" value={number} min="1" step="1" pattern="[0-9]+" onChange={handleChange}></input>

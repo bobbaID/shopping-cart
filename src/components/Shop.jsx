@@ -1,10 +1,36 @@
 import '../index.css';
-import reaper from '../images/reaper.webp';
-import sword from '../images/sword.webp';
-import spear from '../images/spear.webp';
 import { Link } from "react-router-dom";
+import { useEffect, useState } from 'react';
 
 function Shop() {
+  const [itemDict, setItemDict] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const itemDictData = {
+        1:{Name:'Sanguine Reaper', Price:'200', Type:'Weapon', Desc:'A two-handed weapon that deals physical damage. Has a greater effect on undead.'},
+        2:{Name:'Iron Sword', Price:'100', Type:'Weapon', Desc:''},
+        3:{Name:'Copper Spear', Price:'50', Type:'Weapon', Desc:''},
+      }
+
+      const updatedItemDict = { ...itemDictData };
+
+      for (let key in itemDictData) {
+        try {
+          const imagePath = `../images/${itemDictData[key].Name.toLowerCase().replace(' ', '_')}.webp`;
+          const imageModule = await import(imagePath);
+          updatedItemDict[key].Source = imageModule.default;
+        } catch (error) {
+          console.error(`Error loading image for key ${key}:`, error);
+        }
+      }
+
+      setItemDict(updatedItemDict);
+    };
+
+    fetchData();
+  },[])
+
   return (
     <div className="App">
       <header className="flex-row header">
@@ -24,24 +50,17 @@ function Shop() {
           <button>resources</button>
         </div>
         <div className='catalogue'>
-          <div>
-            <Link to={`/reaper`}>
-              <img src={ reaper } alt='item'></img>
-              <h3>$100</h3>
-            </Link>
-          </div>
-          <div>
-            <Link to={`/sword`}>
-              <img src={ sword } alt='item'></img>
-              <h3>$100</h3>
-            </Link>
-          </div>
-          <div>
-            <Link to={`/spear`}>
-              <img src={ spear } alt='item'></img>
-              <h3>$100</h3>
-            </Link>
-          </div>
+          { itemDict &&
+            Object.keys(itemDict).map((key) => (
+              <div key={key}>
+                <Link to={`/${(itemDict[key].Name).toLowerCase().replace(' ','_')}`}>
+                  <img src={ require(itemDict[key].Source) } alt='item'></img>
+                  <h2>{ itemDict[key].Name }</h2>
+                  <h3>${ itemDict[key].Price }</h3>
+                </Link>
+              </div>
+            ))
+          }
         </div>
       </div>
     </div>
