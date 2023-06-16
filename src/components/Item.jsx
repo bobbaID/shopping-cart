@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import Cart from './Cart.jsx'
-import '../components.css'
+import { itemDictData } from './Data.js';
+import Cart from './Cart.jsx';
+import '../components.css';
 
 function Item() {
   const [number, setNumber] = useState(1);
   const [visibleCart, setVisibleCart] = useState(false);
   const [imageSrc, setImageSrc] = useState(null);
+  const [itemData, setItemData] = useState({});
   const [currentPage, setCurrentPage] = useState('');
 
   const toggleCart = () => {
@@ -32,12 +34,21 @@ function Item() {
 
   const addToCart = (event) => {
     event.preventDefault();
-
-    console.log(number)
     if (!/^[0-9]+$/.test(number)) {
       alert('Invalid input. Please enter numbers only.');
     } else {
       // PLAY ADDED ANIMATION
+      let itemName = currentPage.replace('/','');
+      if (!((itemName) in window.$cart)) {
+        window.$cart[itemName] = number
+      } else {
+        window.$cart[itemName] += number
+      }
+
+
+      console.log(window.$cart)
+
+      
     }
   }
 
@@ -56,9 +67,11 @@ function Item() {
         .catch((error) => {
           console.error('Error loading image:', error);
         });
+
+        setItemData(itemDictData[currentPage.replace('/','')])
     }
   }, [currentPage]);
-  
+
 
   return (
     <div className="Item">
@@ -72,14 +85,18 @@ function Item() {
       <div className="flex-row item__">
         <img src={ imageSrc } alt='item'></img>
         <form className="flex-column" onSubmit={addToCart}>
-          <p>Sanguine Reaper</p>
-          <p>Weapon</p>
-          <p>$10</p>
-          <p></p>
+          { itemData &&
+            <>
+              <p>{itemData.Name}</p>
+              <p>{itemData.Type}</p>
+              <p>${itemData.Price}</p>
+              <p>{itemData.Desc}</p>
+            </>
+          }
           <div>
-            <button onClick={decrementNumber}>-</button>
+            <button type='button' onClick={decrementNumber}>-</button>
             <input type="number" value={number} min="1" step="1" pattern="[0-9]+" onChange={handleChange}></input>
-            <button onClick={incrementNumber}>+</button>
+            <button type='button' onClick={incrementNumber}>+</button>
           </div>
           <button type='submit'>Cart</button>
         </form>

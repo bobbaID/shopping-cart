@@ -7,6 +7,8 @@ import Checkout from "./components/Checkout";
 import NotFound from "./components/NotFound";
 
 const RouteSwitch = () => {
+  window.$cart = {}
+
   return (
     <BrowserRouter>
       <Routes>
