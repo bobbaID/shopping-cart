@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { itemDictData } from './Data.js';
 import Cart from './Cart.jsx';
 import '../components.css';
 
-function Item() {
+const Item = () => {
   const [number, setNumber] = useState(1);
   const [visibleCart, setVisibleCart] = useState(false);
   const [imageSrc, setImageSrc] = useState(null);
   const [itemData, setItemData] = useState({});
   const [currentPage, setCurrentPage] = useState('');
+
+  const navigate = useNavigate();
 
   const toggleCart = () => {
     setVisibleCart(!visibleCart)
@@ -38,39 +40,38 @@ function Item() {
       alert('Invalid input. Please enter numbers only.');
     } else {
       // PLAY ADDED ANIMATION
-      let itemName = currentPage.replace('/','');
+      let itemName = currentPage;
       if (!((itemName) in window.$cart)) {
-        window.$cart[itemName] = number
+        window.$cart[itemName] = number;
       } else {
-        window.$cart[itemName] += number
+        window.$cart[itemName] += number;
       }
-
-
-      console.log(window.$cart)
-
-      
+      window.dispatchEvent(new Event('cartUpdated'));
     }
   }
 
   useEffect(() => {
     const pathName = window.location.pathname;
-    setCurrentPage(pathName);
+    setCurrentPage(pathName.replace('/',''));
   }, []);
 
   useEffect(() => {
     if (currentPage !== '') {
-      import(`../images${currentPage}.webp`)
-        .then((imageModule) => {
-          const src = imageModule.default;
-          setImageSrc(src);
-        })
-        .catch((error) => {
-          console.error('Error loading image:', error);
-        });
-
-        setItemData(itemDictData[currentPage.replace('/','')])
+      if (currentPage in itemDictData) {
+        import(`../images/${currentPage}.webp`)
+          .then((imageModule) => {
+            const src = imageModule.default;
+            setImageSrc(src);
+          })
+          .catch((error) => {
+            console.error('Error loading image:', error);
+          });
+          setItemData(itemDictData[currentPage]);
+      } else {
+        navigate('/404', { replace: true });
+      }
     }
-  }, [currentPage]);
+  }, [currentPage, navigate]);
 
 
   return (

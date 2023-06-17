@@ -12,13 +12,13 @@ const RouteSwitch = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/shop" element={<Shop />} />
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/shop" element={<Shop />} />
         <Route path="/shop/:id" element={<Shop />} />
-        <Route path="/contact" element={<Home />} />
-        <Route path="/checkout" component={<Checkout />} />
+        <Route exact path="/contact" element={<Home />} />
+        <Route exact path="/checkout" component={<Checkout />} />
         <Route path="/:id" element={<Item />} />
-        <Route component={<NotFound />} />
+        <Route path="/404" component={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
