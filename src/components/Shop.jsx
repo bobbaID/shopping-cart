@@ -39,11 +39,11 @@ function Shop(props) {
       <div className='page flex-row'>
         <div className='filter-list flex-column'>
           <h2>shop / {subDirectory === null ? 'all' : subDirectory}</h2>
-          <button onClick={() => handleLinkClick('gem')}>gems</button>
+          <button onClick={() => handleLinkClick('weapon')}>weapon</button>
           <button onClick={() => handleLinkClick('equipment')}>equipment</button>
-          <button onClick={() => handleLinkClick('weapon')}>weapons</button>
-          <button onClick={() => handleLinkClick('consumable')}>consumables</button>
-          <button onClick={() => handleLinkClick('resource')}>resources</button>
+          <button onClick={() => handleLinkClick('resource')}>resource</button>
+          <button onClick={() => handleLinkClick('consumable')}>consumable</button>
+          <button onClick={() => handleLinkClick('gem')}>gem</button>
         </div>
         <div className='catalogue'>
           { itemDictData && 
@@ -56,8 +56,8 @@ function Shop(props) {
                 <div key={key}>
                   <Link to={`/${key}`}>
                     <img src={ require(`../images/${key}.webp`) } alt='item'></img>
-                    <h2>{ itemDictData[key].Name }</h2>
-                    <h3>${ itemDictData[key].Price }</h3>
+                    <p>{ itemDictData[key].Name }</p>
+                    <p>${ itemDictData[key].Price }</p>
                   </Link>
                 </div>
               )

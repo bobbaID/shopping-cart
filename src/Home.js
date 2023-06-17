@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <div className="App">
-      <header className="App-header flex-row" style={{ gap:'11% '}}>
+      <header className="flex-row header " style={{ gap:'11% '}}>
         <Link to="/">THE LAIR</Link>
         <Link to="/shop">shop</Link>
         <Link to="/contact">contact</Link>

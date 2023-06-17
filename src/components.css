@@ -2,10 +2,32 @@
     position: relative;
 }
 
+.flex-row, .flex-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .flex-row {
+    flex-direction: row;
+  }
+  
+
 .cart {
     position: absolute;
     background-color: yellow;
     top: 0;
     right: 0;
     height: 100%;
+    width: fit-content;
+    padding: 0 2vw 0 2vw;
+}
+
+.cart__item > img {
+    height: 2rem;
+}
+
+.filter-list {
+    justify-content: flex-start;
 }

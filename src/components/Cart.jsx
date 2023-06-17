@@ -52,7 +52,7 @@ function Cart(props) {
           <h1>your bag</h1>
           { 
             Object.keys(cart).map((key) => (
-              <div key={key}>
+              <div key={key} className="cart__item flex-row">
                 <img src={ require(`../images/${key}.webp`) } alt='item'></img>
                 <p>{upperCaseFirst(key)}: {cart[key]}</p>
               </div>

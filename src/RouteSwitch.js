@@ -6,6 +6,10 @@ import Home from "./Home";
 import Checkout from "./components/Checkout";
 import NotFound from "./components/NotFound";
 
+import './fonts/Nocturne-Light.otf';
+import './fonts/Nocturne-Medium.otf';
+import './fonts/Volkhov-Regular.ttf';
+
 const RouteSwitch = () => {
   window.$cart = {}
 
