@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import { itemDictData } from './Data.js';
 import '../components.css';
 
 function Cart(props) {
@@ -11,14 +12,11 @@ function Cart(props) {
       setCart(prevCart => ({ ...prevCart, ...window.$cart }));
     }
 
-    // console.log(localStorage.getItem('cart'))
-
     const updateCart = () => {
       setCart(prevCart => ({ ...prevCart, ...window.$cart }));
+      console.log(window.$cart)
       localStorage.setItem('cart',JSON.stringify(window.$cart));
     };
-
-    
 
     window.addEventListener('cartUpdated', updateCart);
     return () => {
@@ -26,9 +24,12 @@ function Cart(props) {
     };
   }, []);
 
-  // useEffect(()=> {
-  //   console.log(cart)
-  // },[cart])
+  const removeItem = (item) => {
+    if (window.$cart[item]) {
+      delete window.$cart[item];
+      window.dispatchEvent(new Event('cartUpdated'));
+    }
+  }
 
   const upperCaseFirst = (word) => {
     const array = word.split('_');
@@ -36,6 +37,17 @@ function Cart(props) {
       array[i] = array[i].charAt(0).toUpperCase() + array[i].slice(1);
     }
     return (array.join(' '))
+  }
+
+  function calculateCost() {
+    let cost = 0;
+    for (let key in window.$cart) {
+      if (!isNaN(parseInt(itemDictData[key].Price))) {
+        cost += (parseInt(itemDictData[key].Price) * window.$cart[key])
+      }
+    }
+
+    return (cost);
   }
 
   return (
@@ -51,13 +63,15 @@ function Cart(props) {
           <button onClick={props.toggle}>X</button>
           <h1>your bag</h1>
           { 
-            Object.keys(cart).map((key) => (
+            Object.keys(window.$cart).map((key) => (
               <div key={key} className="cart__item flex-row">
+                <button onClick={() => {removeItem(key)}}>X</button>
                 <img src={ require(`../images/${key}.webp`) } alt='item'></img>
                 <p>{upperCaseFirst(key)}: {cart[key]}</p>
               </div>
             ))
           }
+          <p>Cost : {calculateCost()}</p>
         </motion.div>
       )}
     </AnimatePresence>

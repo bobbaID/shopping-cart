@@ -84,14 +84,14 @@ body {
   overflow-x: hidden;
   justify-items: start;
 }
-/* 
+
 .catalogue > div {
   width: 100%;
-  height: auto;
-  aspect-ratio: 1;
-} */
+  height: 100%;
+} 
 
 .catalogue > div > a {
+  width: 100%;
   height: fit-content;
 }
 
