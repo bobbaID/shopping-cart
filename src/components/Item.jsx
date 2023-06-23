@@ -83,6 +83,7 @@ const Item = () => {
           <button onClick={toggleCart}>Cart</button>
         </div>
       </header>
+      <button onClick={() => {navigate(-1)}}>Back</button>
       <div className="flex-row item__">
         <img src={ imageSrc } alt='item'></img>
         <form className="flex-column" onSubmit={addToCart}>

@@ -69,11 +69,17 @@ body {
 
 .page {
   padding: 2%;
+  box-sizing: border-box;
   flex-grow: 1;
   background-color: var(--blue);
 }
 
+.shop__body {
+   flex-grow: 1;
+}
+
 .catalogue {
+  width: 100%;
   height: 90vh;
   overflow-y: auto;
   flex-grow: 1;
@@ -102,12 +108,27 @@ body {
 }
 
 .filter-list {
+  width: 15rem;
   min-height: 100%;
   justify-content: flex-start;
   padding-left: 2%;
   padding-right: 2%;
 }
 
+.filter-list > h2 {
+  width: 100%;
+  text-align: left;
+}
+
+.filter-list > button {
+  width: 100%;
+  background-color: transparent;
+  border: 0;
+  padding-left: 10%;
+  font-size: 1.5em;
+  text-align: left;
+  cursor: pointer;
+}
 
 input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;

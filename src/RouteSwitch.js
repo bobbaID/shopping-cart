@@ -20,9 +20,9 @@ const RouteSwitch = () => {
         <Route exact path="/shop" element={<Shop />} />
         <Route path="/shop/:id" element={<Shop />} />
         <Route exact path="/contact" element={<Home />} />
-        <Route exact path="/checkout" component={<Checkout />} />
+        <Route exact path="/checkout" element={<Checkout />} />
         <Route path="/:id" element={<Item />} />
-        <Route path="/404" component={<NotFound />} />
+        <Route path="/404" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

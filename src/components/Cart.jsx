@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { itemDictData } from './Data.js';
 import '../components.css';
@@ -72,6 +73,7 @@ function Cart(props) {
             ))
           }
           <p>Cost : {calculateCost()}</p>
+          <Link to="/checkout">Checkout</Link>
         </motion.div>
       )}
     </AnimatePresence>

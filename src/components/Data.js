@@ -1,8 +1,8 @@
 const itemDictData = {
-    'sanguine_reaper':{Name:'Sanguine Reaper', Price:'200', Type:'Weapon', Desc:'A two-handed weapon that deals physical damage. Has a greater effect on undead.'},
-    'sanguine_crossbow':{Name:'Sanguine Crossbow', Price:'200', Type:'Weapon', Desc:'A ranged Weapon that fires bolts.'},
-    'dark_silver_slashers':{Name:'Dark Silver Slasher', Price:'150', Type:'Weapon', Desc:'Dual-wield blades that deal slash damage. Has a physical damage bonus to vegetation and thickets.'},
-    'dark_silver_pistols':{Name:'Dark Silver Pistols', Price:'150', Type:'Weapon', Desc:'Black-powder weapons effective at medium range.'},
+    'sanguine_reaper':{Name:'Sanguine Reaper', Price:'300', Type:'Weapon', Desc:'A two-handed weapon that deals physical damage. Has a greater effect on undead.'},
+    'sanguine_crossbow':{Name:'Sanguine Crossbow', Price:'300', Type:'Weapon', Desc:'A ranged Weapon that fires bolts.'},
+    'dark_silver_slashers':{Name:'Dark Silver Slasher', Price:'200', Type:'Weapon', Desc:'Dual-wield blades that deal slash damage. Has a physical damage bonus to vegetation and thickets.'},
+    'dark_silver_pistols':{Name:'Dark Silver Pistols', Price:'200', Type:'Weapon', Desc:'Black-powder weapons effective at medium range.'},
     'iron_sword':{Name:'Iron Sword', Price:'100', Type:'Weapon', Desc:'An all-round Weapon that deals slash damage. Has a physical damage bonus to vegetation and thickets.'},
     'iron_mace':{Name:'Iron Mace', Price:'100', Type:'Weapon', Desc:'A heavy Weapon that deals blunt damage. Has a physical damage bonus to minerals.'},
     'copper_spear':{Name:'Copper Spear', Price:'50', Type:'Weapon', Desc:'An long-ranged Weapon that deals thrust damage in a line. Has a physical damage bonus to creatures.'},
