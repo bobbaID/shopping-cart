@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Shop from "./components/Shop";
 import Item from "./components/Item";
 import Home from "./Home";
+import Contact from "./Contact";
 import Checkout from "./components/Checkout";
 import NotFound from "./components/NotFound";
 
@@ -19,7 +20,7 @@ const RouteSwitch = () => {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/shop" element={<Shop />} />
         <Route path="/shop/:id" element={<Shop />} />
-        <Route exact path="/contact" element={<Home />} />
+        <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/checkout" element={<Checkout />} />
         <Route path="/:id" element={<Item />} />
         <Route path="/404" element={<NotFound />} />

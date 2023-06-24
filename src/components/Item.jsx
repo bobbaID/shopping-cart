@@ -79,7 +79,6 @@ const Item = () => {
       <header className="flex-row header">
         <Link to="/">THE LAIR</Link>
         <div>
-          <input type="text" placeholder="Search"></input>
           <button onClick={toggleCart}>Cart</button>
         </div>
       </header>

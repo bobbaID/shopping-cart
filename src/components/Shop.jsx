@@ -32,12 +32,11 @@ function Shop(props) {
       <header className="flex-row header">
         <Link to="/">THE LAIR</Link>
         <div>
-          <input type="text" placeholder="Search"></input>
           <button onClick={toggleCart}>Cart</button>
         </div>
       </header>
       <div className='page flex-row'>
-        <div className='filter-list flex-column'>
+        <div className='filter-list'>
           <h2>shop / {subDirectory === null ? 'all' : subDirectory}</h2>
           <button onClick={() => handleLinkClick('weapon')} style={{color: subDirectory === 'weapon' ? 'white' : 'black'}}>weapon</button>
           <button onClick={() => handleLinkClick('equipment')} style={{color: subDirectory === 'equipment' ? 'white' : 'black'}}>equipment</button>
@@ -52,7 +51,6 @@ function Shop(props) {
                 if (subDirectory) {
                   if (itemDictData[key].Type.toLowerCase() !== subDirectory) return null;
                 }
-
                 return (
                   <div key={key}>
                     <Link to={`/${key}`}>

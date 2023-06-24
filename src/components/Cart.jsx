@@ -15,7 +15,6 @@ function Cart(props) {
 
     const updateCart = () => {
       setCart(prevCart => ({ ...prevCart, ...window.$cart }));
-      console.log(window.$cart)
       localStorage.setItem('cart',JSON.stringify(window.$cart));
     };
 
@@ -26,7 +25,7 @@ function Cart(props) {
   }, []);
 
   const removeItem = (item) => {
-    if (window.$cart[item]) {
+    if (window.$cart[item] !== undefined) {
       delete window.$cart[item];
       window.dispatchEvent(new Event('cartUpdated'));
     }
@@ -72,7 +71,7 @@ function Cart(props) {
               </div>
             ))
           }
-          <p>Cost : {calculateCost()}</p>
+          <p>Cost: ${calculateCost()}</p>
           <Link to="/checkout">Checkout</Link>
         </motion.div>
       )}

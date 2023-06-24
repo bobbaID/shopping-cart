@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
+import { itemDictData } from './Data.js';
 
 function Checkout() {
   const [cart, setCart] = useState(window.$cart);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,7 +29,12 @@ function Checkout() {
     setCart((prevCart) => {
       const updatedCart = { ...prevCart };
       if (negative) {
-        updatedCart[key] -= 1;
+        if (updatedCart[key] > 1) {
+          updatedCart[key] -= 1;
+        } else {
+          delete window.$cart[key]
+          delete updatedCart[key];
+        }
       } else {
         updatedCart[key] += 1;
       }
@@ -38,11 +43,39 @@ function Checkout() {
   }
 
   function modifyItem(value, key) {
+    if (!/[0-9]/.test(value.slice(-1))) {
+      value = value.slice(0, value.length - 1);
+    }
+    
+    if (value === '' || value === '0') {
+      value = 1;
+    }
+
     setCart((prevCart) => {
       const updatedCart = { ...prevCart };
       updatedCart[key] = parseInt(value)
       return updatedCart;
     });
+  }
+
+  function deleteItem(key) {
+    setCart((prevCart) => {
+      const updatedCart = { ...prevCart };
+      delete window.$cart[key]
+      delete updatedCart[key];
+      return updatedCart;
+    })
+  }
+
+  function calculateCost() {
+    let cost = 0;
+    for (let key in window.$cart) {
+      if (!isNaN(parseInt(itemDictData[key].Price))) {
+        cost += (parseInt(itemDictData[key].Price) * window.$cart[key])
+      }
+    }
+
+    return (cost);
   }
 
   return (
@@ -59,12 +92,20 @@ function Checkout() {
               <img src={ require(`../images/${key}.webp`) } alt='item'></img>
               <p style={{ margin:'0 1em'}}>{upperCaseFirst(key)}:</p>
               <button onClick={() => {increment(key, true)}}>-</button>
-              <input type="number" value={cart[key]} onChange={(e) => {modifyItem(e.target.value, key)}} style={{ margin:'0 0.5em'}}/>
+              <input 
+                type="number" 
+                value={cart[key]}
+                onChange={(e) => {modifyItem(e.target.value, key)}} 
+                style={{ margin:'0 0.5em'}}
+              />
               <button onClick={() => {increment(key, false)}}>+</button>
+              <button onClick={() => {deleteItem(key)}}>Delete</button>
             </div>
           ))
         }
       </div>
+      <p>Cost: ${calculateCost()}</p>
+      <button>Checkout</button>
       </div>
   );
 }
