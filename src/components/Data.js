@@ -28,7 +28,7 @@ const itemDictData = {
     'crude_ruby':{Name:'Crude Ruby', Price:'25', Type:'Gem', Desc:'Reagent used for crafting.'},
 
     'blood_rose_potion':{Name:'Blood Rose Potion', Price:'30', Type:'Consumable', Desc:'A potion that recovers health every 1 seconds for 15 seconds. '},
-    'potion_of_rage':{Name:'Potion of Rage', Price:'30', Type:'Consumable', Desc:'A brew that increases physical power for 1200 seconds.'},
+    'potion_of_rage':{Name:'Potion of Rage', Price:'30', Type:'Consumable', Desc:'A brew that increases physical power for 1200 seconds. A brew that increases physical power for 1200 seconds. A brew that increases physical power for 1200 seconds. A brew that increases physical power for 1200 seconds. A brew that increases physical power for 1200 seconds. A brew that increases physical power for 1200 seconds.'},
     'silver_resistance_potion':{Name:'Silver Resistance Potion', Price:'40', Type:'Consumable', Desc:'A potion that increases silver resistance rating for 1800 seconds.'},
     'garlic_resistance_potion':{Name:'Garlic Resistance Potion', Price:'40', Type:'Consumable', Desc:'A potion that increases garlic resistance rating for 1800 seconds.'},
     'holy_resistance_flask':{Name:'Holy Resistance Flask', Price:'40', Type:'Consumable', Desc:'A potion that increases holy resistance rating for 1800 seconds.'},

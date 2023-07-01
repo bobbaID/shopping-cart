@@ -6,7 +6,6 @@ function Home() {
     <div className="App">
       <header className="flex-row header " style={{ gap:'11% '}}>
         <Link to="/">THE LAIR</Link>
-        <Link to="/shop">products</Link>
         <Link to="/contact">contact</Link>
       </header>
       <div className='home'>

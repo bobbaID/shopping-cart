@@ -24,12 +24,12 @@ function Cart(props) {
     };
   }, []);
 
-  const removeItem = (item) => {
-    if (window.$cart[item] !== undefined) {
-      delete window.$cart[item];
-      window.dispatchEvent(new Event('cartUpdated'));
-    }
-  }
+  // const removeItem = (item) => {
+  //   if (window.$cart[item] !== undefined) {
+  //     delete window.$cart[item];
+  //     window.dispatchEvent(new Event('cartUpdated'));
+  //   }
+  // }
 
   const upperCaseFirst = (word) => {
     const array = word.split('_');
@@ -52,27 +52,30 @@ function Cart(props) {
 
   return (
     <AnimatePresence>
+      {props.isVisible && ( 
+        <div className="cart__backdrop" onClick={props.toggle}></div> )}
       {props.isVisible && (
         <motion.div
-         className="cart"
-         initial={{ x: '100%' }}
-         animate={{ x: '0%' }}
-         exit={{ x: '100%' }}
-         transition={{ duration: 0.3, ease: 'easeInOut' }}
+          className="cart"
+          initial={{ x: '100%' }}
+          animate={{ x: '0%' }}
+          exit={{ x: '100%' }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          key='items'
         >
           <button onClick={props.toggle}>X</button>
-          <h1>your bag</h1>
+          <p>your bag</p>
           { 
             Object.keys(window.$cart).map((key) => (
               <div key={key} className="cart__item flex-row">
-                <button onClick={() => {removeItem(key)}}>X</button>
+                {/* <button onClick={() => {removeItem(key)}}>[Remove]</button> */}
                 <img src={ require(`../images/${key}.webp`) } alt='item'></img>
                 <p>{upperCaseFirst(key)}: {cart[key]}</p>
               </div>
             ))
           }
-          <p>Cost: ${calculateCost()}</p>
-          <Link to="/checkout">Checkout</Link>
+          <p>subtotal: {calculateCost()} C</p>
+          <Link to="/checkout">CHECKOUT</Link>
         </motion.div>
       )}
     </AnimatePresence>

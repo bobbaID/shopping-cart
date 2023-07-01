@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { itemDictData } from './Data.js';
 
 function Checkout() {
   const [cart, setCart] = useState(window.$cart);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (localStorage.getItem('cart')) {
@@ -14,7 +13,7 @@ function Checkout() {
   },[]);
 
   useEffect(() => {
-    localStorage.setItem('cart',JSON.stringify(cart));
+    localStorage.setItem('cart',JSON.stringify(window.$cart));
   },[cart])
 
   const upperCaseFirst = (word) => {
@@ -38,6 +37,7 @@ function Checkout() {
       } else {
         updatedCart[key] += 1;
       }
+      window.$cart = updatedCart;
       return updatedCart;
     });
   }
@@ -53,7 +53,8 @@ function Checkout() {
 
     setCart((prevCart) => {
       const updatedCart = { ...prevCart };
-      updatedCart[key] = parseInt(value)
+      updatedCart[key] = parseInt(value);
+      window.$cart = updatedCart;
       return updatedCart;
     });
   }
@@ -82,16 +83,17 @@ function Checkout() {
     <div className="App">
       <header className="flex-row header">
         <Link to="/">THE LAIR</Link>
+        <Link to="/shop">products</Link>
       </header>
-      <button onClick={() => {navigate(-1)}}>Back</button>
-      <div>
+      <div className="checkout flex-column">
         { 
           Object.keys(window.$cart).map((key) => (
             <div key={key} className="cart__item flex-row">
               {/* <button onClick={() => {removeItem(key)}}>X</button> */}
               <img src={ require(`../images/${key}.webp`) } alt='item'></img>
-              <p style={{ margin:'0 1em'}}>{upperCaseFirst(key)}:</p>
-              <button onClick={() => {increment(key, true)}}>-</button>
+              <p style={{ margin:'0 1em'}}>{upperCaseFirst(key)}</p>
+              <p>{(itemDictData[key].Price)} C</p>
+              <button onClick={() => {increment(key, true)}}>−</button>
               <input 
                 type="number" 
                 value={cart[key]}
@@ -99,12 +101,13 @@ function Checkout() {
                 style={{ margin:'0 0.5em'}}
               />
               <button onClick={() => {increment(key, false)}}>+</button>
+              <p>{(itemDictData[key].Price) * window.$cart[key]} C</p>
               <button onClick={() => {deleteItem(key)}}>Delete</button>
             </div>
           ))
         }
       </div>
-      <p>Cost: ${calculateCost()}</p>
+      <p>Cost: {calculateCost()} C</p>
       <button>Checkout</button>
       </div>
   );
