@@ -33,7 +33,7 @@ function Shop(props) {
         <Link to="/">THE LAIR</Link>
         <div>
           <button onClick={toggleCart}>
-            <svg className="svg-icon" fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="1em" height="1em" viewBox="0 0 902.86 902.86" xmlSpace="preserve">
+            <svg className="svg-icon" fill="#ffffff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="1em" height="1em" viewBox="0 0 902.86 902.86" xmlSpace="preserve">
               <g>
                 <g>
                   <path d="M671.504,577.829l110.485-432.609H902.86v-68H729.174L703.128,179.2L0,178.697l74.753,399.129h596.751V577.829z M685.766,247.188l-67.077,262.64H131.199L81.928,246.756L685.766,247.188z"/>
@@ -47,11 +47,11 @@ function Shop(props) {
       <div className='page flex-row'>
         <div className='filter-list'>
           <h2>shop / {subDirectory === null ? 'all' : subDirectory}</h2>
-          <button onClick={() => handleLinkClick('weapon')} style={{color: subDirectory === 'weapon' ? 'white' : 'black'}}>weapon</button>
-          <button onClick={() => handleLinkClick('equipment')} style={{color: subDirectory === 'equipment' ? 'white' : 'black'}}>equipment</button>
-          <button onClick={() => handleLinkClick('resource')} style={{color: subDirectory === 'resource' ? 'white' : 'black'}}>resource</button>
-          <button onClick={() => handleLinkClick('consumable')} style={{color: subDirectory === 'consumable' ? 'white' : 'black'}}>consumable</button>
-          <button onClick={() => handleLinkClick('gem')} style={{color: subDirectory === 'gem' ? 'white' : 'black'}}>gem</button>
+          <button onClick={() => handleLinkClick('weapon')} style={{color: subDirectory === 'weapon' ? 'white' : '#696969'}}>weapon</button>
+          <button onClick={() => handleLinkClick('equipment')} style={{color: subDirectory === 'equipment' ? 'white' : '#696969'}}>equipment</button>
+          <button onClick={() => handleLinkClick('resource')} style={{color: subDirectory === 'resource' ? 'white' : '#696969'}}>resource</button>
+          <button onClick={() => handleLinkClick('consumable')} style={{color: subDirectory === 'consumable' ? 'white' : '#696969'}}>consumable</button>
+          <button onClick={() => handleLinkClick('gem')} style={{color: subDirectory === 'gem' ? 'white' : '#696969'}}>gem</button>
         </div>
         <div className='shop__body flex-column'>
           <div className='catalogue'>

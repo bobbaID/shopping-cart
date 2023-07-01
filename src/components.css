@@ -1,7 +1,16 @@
-.item__  {
+.Item {
+    height: 100%;
+    width: 100%;
+}
+
+.item__ {
     position: relative;
     align-items: flex-start !important;
-    margin-top: 1em;
+    padding-top: 1em;
+    width: 100%;
+    flex-grow: 1;
+    background-color: var(--space-cadet);
+    color: white;
 }
 
 .item__form {
@@ -31,13 +40,14 @@
 }
 
 .item__form > p:first-of-type {
+    color: var(--cerise);
     padding-right: 2em;
     box-sizing: border-box;
     font-size: 2em;
 }
 
-.item__form > :nth-of-type(2) {
-    background-color: rgba(0, 0, 0, 0.2);
+.item__form > p:nth-of-type(2) {
+    background-color: rgba(0, 0, 0, 0.60);
     width: fit-content;
     padding: 1%;
 }
@@ -95,7 +105,8 @@
 
 .cart {
     position: absolute;
-    background-color: yellow;
+    background-color: var(--space-cadet);
+    color: white;
     top: 0;
     right: 0;
     height: 100%;
@@ -115,7 +126,8 @@
     font-size: 1.8em;
     background-color: transparent;
     border: 0;
-    font-size: VolkhovRegular;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: VolkhovRegular;
     font-weight: 700;
 }
 
@@ -123,17 +135,28 @@
     text-align: left;
     font-size: 1.6em;
     font-weight: 600;
+    text-shadow: 0.1em 0.1em 0.1em black;
+}
+
+.cart > p:last-of-type {
+    color: var(--cerise)
 }
 
 .cart > :last-child {
     text-align: center;
     font-size: 1.6em;
     font-weight: 100;
-    padding: 4% 1% 4% 1%;
+    padding: 1.5% 3%;
     margin-top: 1em;
     margin-bottom: 1em;
-    border: 0.125em solid black;
+    color: black;
+    background-color: var(--cerise);
+    border: 0.125em solid var(--licorice);
     border-radius: 0.5em;
+    width: fit-content;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .cart__backdrop {
@@ -142,12 +165,23 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.543);
     transform: scale(5);
+    animation: opacityIn 0.2s linear;
+}
+
+@keyframes opacityIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .cart__item {
-    padding: 0 1em;
+    padding: 0.5em 1em;
     width: 100%;
     text-align: left !important;
+    background-color: var(--raisin-black);
 }
 
 .cart__item > img {
@@ -161,6 +195,7 @@
     flex-grow: 1;
     font-size: 1.4em;
     padding: 0 0.75em;
+    text-shadow: 0.1em 0.1em 0.1em black;
 }
 
 .cart__item > button {
@@ -169,27 +204,39 @@
     padding: 0 0.5em 0 0;
     font-size: 1.1em;
     font-weight: 400;
+    color: white;
+    margin-left: 1.1em;
 }
 
-.filter-list {
-    justify-content: flex-start;
+.cart__item > button:nth-of-type(2) {
+    margin-left: 0;
+}
+
+.checkout > .cart__item > p:last-of-type {
+    margin-left: 0.8em;
+    color: var(--cerise)
 }
 
 .checkout {
-    margin-top: 0.5em;
+    padding-top: 0.5em;
     width: 100%;
     overflow-y: auto;
     justify-content: flex-start;
+    background-color: var(--raisin-black);
+    color:white;
 }
 
 .checkout > .cart__item {
     width: 70%;
+    margin-bottom: 0.5em;
+    color: white;
 }
 
 .checkout > .cart__item > p {
     flex-grow: unset;
     width: 5em;
     text-align: center;
+    text-overflow: ellipsis;
 }
 
 .checkout > .cart__item > input {
@@ -200,4 +247,59 @@
 .checkout > .cart__item > p:first-of-type {
     flex-grow: 1;
     text-align: left;
+}
+
+.checkout > .cart__item > :last-child {
+    color: rgba(255, 255, 255, 0.5)
+}
+
+.checkout__category {
+    font-size: 1.4em;
+    width: 70%;
+    border-bottom: 0.1em solid white;
+    padding-bottom: 0.2em;
+    margin-bottom: 0.2em;
+}
+
+.checkout__category > p:first-child {
+    text-align: left;
+    padding-left: 3.8em;
+    flex-grow: 1;
+}
+
+.checkout__category > p:nth-of-type(2) {
+    width: 6.5em;
+}
+
+.checkout__category > p:nth-of-type(3) {
+    width: 6em;
+}
+
+.checkout__category > p:nth-of-type(4) {
+    width: 7em;
+}
+
+.checkout__footer {
+    padding: 1em;
+    justify-content: space-around;
+    width: 100%;
+    background-color: var(--air-force-blue);
+}
+
+.checkout__cost {
+    color: white;
+    font-size: 1.6em;
+    text-shadow: 0.1em 0.1em 0.2em black;
+}
+
+.checkout__button {
+    color: black;
+    background-color: var(--cerise);
+    border: 0.125em solid var(--licorice);
+    padding: 0.5%;
+    box-sizing: border-box;
+    border-radius: 0.5em;
+    font-size: 1.6em;
+    font-weight: 600;
+    width: fit-content;
 }

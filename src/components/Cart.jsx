@@ -63,19 +63,19 @@ function Cart(props) {
           transition={{ duration: 0.3, ease: 'easeInOut' }}
           key='items'
         >
-          <button onClick={props.toggle}>X</button>
+          <button onClick={props.toggle}>&gt;</button>
           <p>your bag</p>
           { 
             Object.keys(window.$cart).map((key) => (
               <div key={key} className="cart__item flex-row">
                 {/* <button onClick={() => {removeItem(key)}}>[Remove]</button> */}
-                <img src={ require(`../images/${key}.webp`) } alt='item'></img>
+                <img src={require(`../images/${key}.webp`)} alt='item'></img>
                 <p>{upperCaseFirst(key)}: {cart[key]}</p>
               </div>
             ))
           }
           <p>subtotal: {calculateCost()} C</p>
-          <Link to="/checkout">CHECKOUT</Link>
+          <Link to="/checkout">edit cart</Link>
         </motion.div>
       )}
     </AnimatePresence>

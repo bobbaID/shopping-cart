@@ -9,14 +9,15 @@ function Home() {
         <Link to="/contact">contact</Link>
       </header>
       <div className='home'>
-        <p>looking for power?</p>
-        <p>building a castle?</p>
-        <p>conquering the town?</p>
-        <br/>
-        <p>you came to just the right place</p>
-        <p>we provide services to all aspiring vampires</p>
-        <p>a world consumed by vampires, as Dracula intended</p>
-        <Link to="/shop">take me</Link>
+        <div className='flex-column'>
+          <p>building a castle?</p>
+          <p>looking for power?</p>
+          <p>conquering the town?</p>
+          <br/>
+          <p>you came to just the right place</p>
+          <br/>
+          <Link to="/shop">take me</Link>
+        </div>
       </div>
     </div>
   );

@@ -36,6 +36,10 @@ function Checkout() {
         }
       } else {
         updatedCart[key] += 1;
+
+        if (updatedCart[key] > 999) {
+          updatedCart[key] = 999
+        }
       }
       window.$cart = updatedCart;
       return updatedCart;
@@ -49,6 +53,10 @@ function Checkout() {
     
     if (value === '' || value === '0') {
       value = 1;
+    }
+
+    if (value > 999) {
+      value = 999
     }
 
     setCart((prevCart) => {
@@ -79,13 +87,31 @@ function Checkout() {
     return (cost);
   }
 
+  const calculateItem = () => {
+    let number = 0;
+    for (let key in window.$cart) {
+      if (!isNaN(parseInt(itemDictData[key].Price))) {
+        number += window.$cart[key];
+      }
+    }
+
+    return (`${number} ${number > 1 ?  'Items' : 'Item'}`)
+  }
+
   return (
-    <div className="App">
+    <div className="App flex-column">
       <header className="flex-row header">
         <Link to="/">THE LAIR</Link>
         <Link to="/shop">products</Link>
       </header>
       <div className="checkout flex-column">
+        <div className="checkout__category flex-row">
+        <p>Product</p>
+        <p>Unit Price</p>
+        <p>Quantity</p>
+        <p>Total Price</p>
+        <p>Actions</p>
+        </div>
         { 
           Object.keys(window.$cart).map((key) => (
             <div key={key} className="cart__item flex-row">
@@ -107,8 +133,10 @@ function Checkout() {
           ))
         }
       </div>
-      <p>Cost: {calculateCost()} C</p>
-      <button>Checkout</button>
+      <div className="checkout__footer flex-row">
+        <p className="checkout__cost">Total: {calculateCost()} C ({calculateItem()})</p>
+        <button className="checkout__button">check out</button>
+      </div>
       </div>
   );
 }

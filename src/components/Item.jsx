@@ -20,14 +20,22 @@ const Item = () => {
   const handleChange = (event) => {
     const inputValue = event.target.value;
     if (/^[0-9]+$/.test(inputValue)) {
-      setNumber(parseInt(inputValue, 10));
+      if (parseInt(inputValue, 10) > 999) {
+        setNumber(999);
+      } else {
+        setNumber(parseInt(inputValue, 10));
+      }
     } else {
       setNumber(1);
     }
   };
 
   const incrementNumber = () => {
-    setNumber(number + 1);
+    if (number + 1 > 999) {
+      setNumber(999);
+    } else {
+      setNumber(number + 1);
+    }
   };
 
   const decrementNumber = () => {
@@ -45,6 +53,9 @@ const Item = () => {
         window.$cart[itemName] = number;
       } else {
         window.$cart[itemName] += number;
+        if (window.$cart[itemName] > 999) {
+          window.$cart[itemName] = 999;
+        }
       }
       window.dispatchEvent(new Event('cartUpdated'));
       setVisibleCart(!visibleCart)
@@ -76,12 +87,12 @@ const Item = () => {
 
 
   return (
-    <div className="Item">
+    <div className="Item flex-column">
       <header className="flex-row header">
         <Link to="/">THE LAIR</Link>
         <div>
           <button onClick={toggleCart}>
-            <svg className="svg-icon" fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="1em" height="1em" viewBox="0 0 902.86 902.86" xmlSpace="preserve">
+            <svg className="svg-icon" fill="#ffffff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="1em" height="1em" viewBox="0 0 902.86 902.86" xmlSpace="preserve">
               <g>
                 <g>
                   <path d="M671.504,577.829l110.485-432.609H902.86v-68H729.174L703.128,179.2L0,178.697l74.753,399.129h596.751V577.829z M685.766,247.188l-67.077,262.64H131.199L81.928,246.756L685.766,247.188z"/>
