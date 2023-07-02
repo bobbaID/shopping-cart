@@ -23,7 +23,7 @@ const RouteSwitch = () => {
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/checkout" element={<Checkout />} />
         <Route path="/:id" element={<Item />} />
-        {/* <Route exact path="/404" element={<NotFound />} /> */}
+        <Route exact path="/404" element={<NotFound />} />
       </Routes>
     </HashRouter>
   );

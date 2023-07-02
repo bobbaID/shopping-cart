@@ -235,6 +235,7 @@
     justify-content: flex-start;
     background-color: var(--raisin-black);
     color:white;
+    flex-grow: 1;
 }
 
 .checkout > .cart__item {
