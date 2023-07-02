@@ -1,6 +1,7 @@
 ## Shopping Cart
 
 A React app which allows users to browse a fictional shop set in a world populated by vampires.
+
 Built for The Odin Project.
 
 Tech Used: React, CSS, Javascript
