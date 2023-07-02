@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/shopping-cart/static/css/main.5fb89361.css",
-    "main.js": "/shopping-cart/static/js/main.d21ccffb.js",
+    "main.css": "/shopping-cart/static/css/main.0ee136d4.css",
+    "main.js": "/shopping-cart/static/js/main.af373e07.js",
     "static/media/homepage.jpg": "/shopping-cart/static/media/homepage.a01f1e49f541baee66f6.jpg",
     "static/media/Volkhov-Regular.ttf": "/shopping-cart/static/media/Volkhov-Regular.50c81e12252988e0e5be.ttf",
     "static/media/sanguine_crossbow.webp": "/shopping-cart/static/media/sanguine_crossbow.31e5af275558c911a782.webp",
@@ -49,11 +49,11 @@
     "static/media/regular_miststone.webp": "/shopping-cart/static/media/regular_miststone.207f1e72c363f924b0a0.webp",
     "static/media/crude_ruby.webp": "/shopping-cart/static/media/crude_ruby.3aa8186a0e8516c35438.webp",
     "index.html": "/shopping-cart/index.html",
-    "main.5fb89361.css.map": "/shopping-cart/static/css/main.5fb89361.css.map",
-    "main.d21ccffb.js.map": "/shopping-cart/static/js/main.d21ccffb.js.map"
+    "main.0ee136d4.css.map": "/shopping-cart/static/css/main.0ee136d4.css.map",
+    "main.af373e07.js.map": "/shopping-cart/static/js/main.af373e07.js.map"
   },
   "entrypoints": [
-    "static/css/main.5fb89361.css",
-    "static/js/main.d21ccffb.js"
+    "static/css/main.0ee136d4.css",
+    "static/js/main.af373e07.js"
   ]
 }
