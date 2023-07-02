@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
 import { itemDictData } from './Data.js';
+import Header from "./Header.jsx";
 
 function Checkout() {
   const [cart, setCart] = useState(window.$cart);
@@ -100,10 +100,7 @@ function Checkout() {
 
   return (
     <div className="App flex-column">
-      <header className="flex-row header">
-        <Link to="/">THE LAIR</Link>
-        <Link to="/shop">products</Link>
-      </header>
+      <Header></Header>
       <div className="checkout flex-column">
         <div className="checkout__category flex-row">
         <p>Product</p>
@@ -138,6 +135,7 @@ function Checkout() {
         <button className="checkout__button">check out</button>
       </div>
       </div>
+      
   );
 }
   

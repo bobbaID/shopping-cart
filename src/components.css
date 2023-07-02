@@ -68,6 +68,9 @@
     align-items: center;
     aspect-ratio: 1;
     font-size: 1.6em;
+    background-color: transparent;
+    border: 0;
+    color: white;
 }
 
 .item__form > div > input {
@@ -80,15 +83,23 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    background-color: transparent;
+    border: 0;
+    font-size: 1.6em;
+    color:var(--cerise);
+    font-weight: 700;
 }
 
 .item__ > img {
     margin-right: 1em;
     width: 10vw;
+    filter: drop-shadow(0.4em 0.3em 0em var(--licorice));
 }
 
 .item__button {
     margin: 1%;
+    color: var(--air-force-blue) !important;
+    font-weight: 400 !important;
 }
 
 .flex-row, .flex-column {

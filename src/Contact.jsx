@@ -1,13 +1,17 @@
-import './Home.css';
-import { Link } from "react-router-dom";
+import Header from './components/Header';
+import Cart from './components/Cart';
+import { useState } from 'react';
 
 function Checkout() {
+  const [visibleCart, setVisibleCart] = useState(false);
+
+  const toggleCart = () => {
+    setVisibleCart(!visibleCart)
+  }
+
   return (
     <div className="App">
-      <header className="flex-row header " style={{ gap:'11% '}}>
-        <Link to="/">THE LAIR</Link>
-        <Link to="/shop">products</Link>
-      </header>
+      <Header toggleClick={toggleCart}></Header>
       <div className='contact'>
         <div className='flex-column'>
           <p> the premier choice for all vampire needs </p>
@@ -39,6 +43,7 @@ function Checkout() {
           </p>
         </div>
       </div>
+      <Cart toggle={toggleCart} isVisible={visibleCart}></Cart>
     </div>
   );
 }

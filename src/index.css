@@ -68,24 +68,24 @@ body {
 }
 
 .header {
+  text-align: center;
   width: 100%;
   justify-content: space-around !important;
   background-color: var(--licorice);
   padding: 0.5% 0;
   font-size: 1.8em;
   border-bottom: 0.2em inset rgba(22, 4, 20, 0.200);
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+}
+
+.header > :first-child {
+  grid-column: 1 / span 4;
 }
 
 .header > * {
   height: 100%;
   color: white !important;
-}
-
-.header > div {
-  min-width: 15vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
 }
 
 .header > div > button {
@@ -96,6 +96,7 @@ body {
   font-size: 1em;
   position: relative;
   top: 0.1em;
+  transform: translateX(-100%);
 }
 
 .home {
@@ -107,6 +108,7 @@ body {
   align-items: flex-end;
   padding-right: 15vw;
   background-color: rgba(0, 0, 0, 0.2);
+  animation: opacityIn 2.0s linear;
 }
 
 .home > div > p:first-of-type {
@@ -222,9 +224,31 @@ button {
   cursor: pointer;
 }
 
-.contact, .home {
+.contact, .home, .not-found {
   width: 100%;
   flex-grow: 1;
+}
+
+.not-found {
+  background: url(./images/contact.webp) no-repeat center center/cover;
+  color: white;
+  font-size: 1.8em;
+}
+
+.not-found > div {
+  height: 100%;
+}
+
+.not-found > div > p:first-of-type {
+  font-size: 8em;
+  color:var(--cerise);
+  text-shadow: 0.035em 0.035em 0.025em black;
+}
+
+.not-found > div > button {
+  border: 0;
+  background-color: transparent;
+  font-size: 1.4em;
 }
 
 .contact {
@@ -266,4 +290,12 @@ button {
 *::-webkit-scrollbar-thumb {
   background-color: var(--cerise);
   border-radius: 1em;
+}
+
+textarea:focus, input:focus{
+  outline: 0.2rem solid var(--cerise);
+}
+
+*:focus {
+  outline: none;
 }
